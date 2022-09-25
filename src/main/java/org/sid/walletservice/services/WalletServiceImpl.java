@@ -1,6 +1,7 @@
 package org.sid.walletservice.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.sid.walletservice.dto.CurrencyTransferResponse;
 import org.sid.walletservice.dto.NewWalletTransferRequest;
 import org.sid.walletservice.entities.Currency;
@@ -30,7 +31,7 @@ public class WalletServiceImpl {
     private final WalletTransactionRepository walletTransactionRepository;
     private final CurrencyRepository currencyRepository;
     @Autowired
-    private RestTemplate restTemplate;
+    private KeycloakRestTemplate restTemplate;
 
     public WalletServiceImpl(WalletRepository walletRepository, WalletTransactionRepository walletTransactionRepository, CurrencyRepository currencyRepository) {
         this.walletRepository = walletRepository;

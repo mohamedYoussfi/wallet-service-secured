@@ -1,5 +1,7 @@
 package org.sid.walletservice;
 
+import org.keycloak.adapters.springsecurity.client.KeycloakClientRequestFactory;
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.sid.walletservice.entities.Currency;
 import org.sid.walletservice.entities.Wallet;
 import org.sid.walletservice.repositories.CurrencyRepository;
@@ -24,8 +26,8 @@ public class WalletServiceApplication {
 		SpringApplication.run(WalletServiceApplication.class, args);
 	}
 	@Bean
-	RestTemplate restTemplate(){
-		return new RestTemplate();
+	KeycloakRestTemplate restTemplate(KeycloakClientRequestFactory keycloakClientRequestFactory){
+		return new KeycloakRestTemplate(keycloakClientRequestFactory);
 	}
 	@Bean
 	CommandLineRunner start(CurrencyServiceImpl currencyService,
